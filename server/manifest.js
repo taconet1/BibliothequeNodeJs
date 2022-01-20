@@ -46,15 +46,12 @@ module.exports = new Confidence.Store({
                         migrateOnStart: true,
                         knex: {
                             client: 'mysql',
-                            useNullAsDefault: true,     // Suggested for sqlite3
                             connection: {
-                                host: process.env.DB_HOST || '0.0.0.0:3307',
+                                host: process.env.DB_HOST || '0.0.0.0',
+                                port: process.env.DB_PORT || '3307',
                                 user: process.env.DB_USER || 'root',
                                 password: process.env.DB_PASSWORD || '',
                                 database: process.env.DB_DATABASE || 'bibliothequenodejs'
-                            },
-                            migrations: {
-                                stub: Schwifty.migrationsStubPath
                             }
                         }
                     },
